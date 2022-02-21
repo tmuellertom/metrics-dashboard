@@ -6,16 +6,20 @@
 
 ![pods](/answer-img/pods.png)
 [[answer-img/pods.png]]  
+
+![services](/answer-img/services.png)
 [[/answer-img/services.png]]  
 
 ## Setup the Jaeger and Prometheus source
 *TODO:* Expose Grafana to the internet and then setup Prometheus as a data source. Provide a screenshot of the home page after logging into Grafana.
 
+![grafana](/answer-img/grafana.png)
 [[/answer-img/grafana.png]]  
 
 ## Create a Basic Dashboard
 *TODO:* Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
 
+![basic-dashboard](/answer-img/basic-dashboard.png)
 [[/answer-img/basic-dashboard.png]]  
 
 ## Describe SLO/SLI
@@ -51,20 +55,22 @@ HTTP 5xx Error:
 ```
 sum(rate(nginx_ingress_controller_requests{controller_pod=~"$controller",controller_class=~"$controller_class",namespace=~"$namespace",status~"[5].*"}[2m])) 
 ```
-
+![sli-dashboard](/answer-img/sli-dashboard.png)
 [[/answer-img/sli-dashboard.png]]
 
 ## Tracing our Flask App
 *TODO:*  We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here. Also provide a (screenshot) sample Python file containing a trace and span code used to perform Jaeger traces on the backend service.
 
-Code of the backend app is also uploaded to this repository. Also the edited deployment (add annotation) is included.
-
+Code of the backend app is also uploaded to this repository. Also the edited deployment (add annotation) is included.  
+![services](/answer-img/services.png)
 [[/answer-img/flask-app.png]]  
+![services](/answer-img/services.png)
 [[/answer-img/jaeger-ui.png]]  
 
 ## Jaeger in Dashboards
 *TODO:* Now that the trace is running, let's add the metric to our current Grafana dashboard. Once this is completed, provide a screenshot of it here.
 
+![jaeger-grafana](/answer-img/jaeger-grafana.png)
 [[/answer-img/jaeger-grafana.png]]  
 
 ## Report Error
@@ -117,4 +123,5 @@ Requests per minute:
 round(sum(irate(nginx_ingress_controller_requests{controller_pod=~"$controller",controller_class=~"$controller_class",controller_namespace=~"$namespace",ingress=~"$ingress"}[1m])) by (ingress), 0.001)
 ```
 
+![kpi-dashboard](/answer-img/kpi-dashboard.png)
 [[/answers/kpi-dashboard.png]]
