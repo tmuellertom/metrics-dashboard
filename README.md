@@ -62,9 +62,9 @@ sum(rate(nginx_ingress_controller_requests{controller_pod=~"$controller",control
 *TODO:*  We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here. Also provide a (screenshot) sample Python file containing a trace and span code used to perform Jaeger traces on the backend service.
 
 Code of the backend app is also uploaded to this repository. Also the edited deployment (add annotation) is included.  
-![services](/answer-img/services.png)
+![services](/answer-img/flask-app.png)
 [[/answer-img/flask-app.png]]  
-![services](/answer-img/services.png)
+![services](/answer-img/jaeger-ui.png)
 [[/answer-img/jaeger-ui.png]]  
 
 ## Jaeger in Dashboards
