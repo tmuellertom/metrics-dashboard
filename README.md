@@ -76,6 +76,28 @@ Code of the backend app is also uploaded to this repository. Also the edited dep
 ## Report Error
 *TODO:* Using the template below, write a trouble ticket for the developers, to explain the errors that you are seeing (400, 500, latency) and to let them know the file that is causing the issue also include a screenshot of the tracer span to demonstrate how we can user a tracer to locate errors easily.
 
+TROUBLE TICKET 
+
+Name: trail app not running  
+
+Date: 23.02.2021 - 22:00
+
+Subject: Pod running but not serving the app correctly  
+
+Affected Area: `jinja2.exceptions.TemplateNotFound: main.html`
+
+Severity: high  
+
+Descripion:
+When we are lookin at the pod the trail app is running `default         trial-app-6cd98d67f4-9n272                               1/1     Running     4 (41m ago)    4d` but when we try to access the application via Browser( Nodeport) `default         trial-service                                        NodePort       10.43.231.202   <none>        8082:30008/TCP                           4d` the App only shows 
+```
+Internal Server Error
+The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+```
+While checking the logs of the pod `kubectl logs trial-app-6cd98d67f4-t8tp7` the template error was found. It affects /traial/app.py line 51 `return render_template("main.html")`
+
+
+### old version of trouble ticket below
 TROUBLE TICKET (trouble Ticket if we assume to have a high latency, which is not the case right now)  
 
 Name: Thomas Müller  
