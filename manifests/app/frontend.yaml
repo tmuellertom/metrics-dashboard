@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend-app
+  labels:
+    name: frontend-app
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
 spec:
   replicas: 3
   selector:
@@ -15,6 +19,7 @@ spec:
       containers:
       - name: frontend
         image: psysaar/frontend:latest
+        imagePullPolicy: Always
         ports:
         - name: frontendport
           containerPort: 8080
@@ -33,8 +38,10 @@ spec:
   selector:
     app: frontend
   ports:
-    - port: 8084
+    - name: frontend
+      port: 8084
       targetPort: 8080
+      protocol: TCP
   type: LoadBalancer
 ---
 apiVersion: monitoring.coreos.com/v1
